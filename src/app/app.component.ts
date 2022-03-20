@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Entry } from './models/entry';
 import { Observable } from 'rxjs';
 import { ulid } from 'ulid';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 
 @Component({
@@ -29,14 +30,16 @@ export class AppComponent {
   }
 
   async saveNewEntry() {
+    const id = ulid();
+
     const newEntry: Entry = {
-      id: ulid(),
+      id,
       title: this.newEntryTitle,
       body: this.newEntryContent,
       created_at: new Date(),
       updated_at: new Date()
     };
 
-    this.firestore.collection<Entry>('journal_entries').add(newEntry);
+    this.firestore.collection<Entry>('journal_entries').doc(id).set(newEntry);
   }
 }
