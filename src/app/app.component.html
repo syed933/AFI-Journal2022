@@ -1,0 +1,33 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi@ionicframework.com</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let entry of entries$ | async">
+            <ion-item routerDirection="root" [routerLink]="'/entry/' + [entry.id]" lines="none" detail="false" routerLinkActive="selected">
+              <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+              <ion-label>{{ entry.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <input [(ngModel)]="newEntryTitle">
+        <textarea [(ngModel)]="newEntryContent"></textarea>
+        <button (click)="saveNewEntry()">Add Entry</button>
+
+        <!-- <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list> -->
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "afi-journal2022": {
+      "hosting": {
+        "app": [
+          "afi-journal2022"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "afi-journal2022"
+  }
+}
