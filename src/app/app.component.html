@@ -1,22 +1,29 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+  <ion-split-pane when="sm" contentId="main-content">
+
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+        <ion-menu-toggle autoHide="false">
+          <ion-list id="inbox-list">
+            <img class="user_icon" src="../assets//icon/user.png" alt="">
+            <ion-list-header color="light">User 1</ion-list-header>
+            <ion-note>Your AFI Journal</ion-note>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let entry of entries$ | async">
-            <ion-item routerDirection="root" [routerLink]="'/entry/' + [entry.id]" lines="none" detail="false" routerLinkActive="selected">
-              <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
-              <ion-label>{{ entry.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <input [(ngModel)]="newEntryTitle">
-        <textarea [(ngModel)]="newEntryContent"></textarea>
-        <button (click)="saveNewEntry()">Add Entry</button>
+            <ion-text color="success">
+              <h5>Existing Entries</h5>
+            </ion-text>
+            <ion-menu-toggle auto-hide="false" *ngFor="let entry of entries$ | async">
+              <ion-item routerDirection="root" [routerLink]="'/entry/' + [entry.id]" lines="none" detail="false" routerLinkActive="selected">
+                <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+                <ion-label>{{ entry.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+          <!-- <ion-button color="success">
+            <ion-router-link href="/" color="dark">Create New Entry</ion-router-link>
+          </ion-button> -->
+          <ion-button (click)='createNewEntry()' color="success">Create New Entry</ion-button>
+        </ion-menu-toggle>
 
         <!-- <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>

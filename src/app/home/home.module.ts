@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { EntryPageRoutingModule } from './entry-routing.module';
-import { EntryPage } from './entry.page';
+import { HomePageRoutingModule } from './home-routing.module';
+import { HomePage } from './home.page';
 import { QuillModule } from 'ngx-quill';
 
 @NgModule({
@@ -11,9 +11,9 @@ import { QuillModule } from 'ngx-quill';
     CommonModule,
     FormsModule,
     IonicModule,
-    EntryPageRoutingModule,
+    HomePageRoutingModule,
     QuillModule
   ],
-  declarations: [EntryPage]
+  declarations: [HomePage]
 })
-export class EntryPageModule {}
+export class HomePageModule {}

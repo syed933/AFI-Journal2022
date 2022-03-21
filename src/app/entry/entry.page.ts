@@ -39,6 +39,7 @@ export class EntryPage implements OnInit {
     this.isEditMode = true;
   }
 
+
   onDeleteClick() {
     console.log('Delete');
     this.firestore.doc(`journal_entries/${this.entry.id}`).delete();
@@ -49,5 +50,6 @@ export class EntryPage implements OnInit {
 
   onSaveClick() {
     this.firestore.doc<Entry>(`journal_entries/${this.entry.id}`).update(this.entry);
+    this.router.navigate(['/']);
   }
 }

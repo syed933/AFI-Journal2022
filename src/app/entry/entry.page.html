@@ -1,20 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>{{ entry.title }}</ion-title>
-  </ion-toolbar>
+  <ion-menu-button auto-hide></ion-menu-button>
+  <div *ngIf="!isEditMode">
+    <ion-toolbar>
+      <ion-title>{{ entry.title }}</ion-title>
+      <p [innerHtml]="entry.body"></p>
+      <ion-button slot="end" size='small' (click)='onEditClick()'>Edit</ion-button>
+      <ion-button slot="end" size='small' (click)='onDeleteClick()'>Delete</ion-button>
+    </ion-toolbar>
+  </div>
 </ion-header>
 
 <ion-content>
   <div *ngIf="isEditMode">
     <input [(ngModel)]="entry.title">
-    <textarea [(ngModel)]="entry.body"></textarea>
-    <button (click)='onSaveClick()'>Save</button>
+    <br>
+    <quill-editor [(ngModel)]="entry.body"></quill-editor>
+    <br>
+    <ion-button size="small" (click)='onSaveClick()'>Save</ion-button>
   </div>
 
-  <div *ngIf="!isEditMode">
-    <p>{{entry.body}}</p>
-    <button (click)='onEditClick()'>Edit</button>
-  </div>
 
-  <button (click)='onDeleteClick()'>Delete</button>
 </ion-content>
+
+

@@ -1,0 +1,12 @@
+
+<ion-content>
+  <ion-text color="primary">
+    <h5>Input New Entries Below</h5>
+  </ion-text>
+  <ion-item>
+    <input placeholder="Entry Title" [(ngModel)]="newEntryTitle">
+  </ion-item>
+  <quill-editor [(ngModel)]="newEntryContent"></quill-editor>
+  <br>
+  <ion-button color="success" (click)="saveNewEntry()">Add Entry</ion-button>
+</ion-content>
